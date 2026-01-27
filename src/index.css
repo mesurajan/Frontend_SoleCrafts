@@ -1,1 +1,20 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@theme{
+  --color-primary:#0A174E;
+  
+}
+
+@layer Components{
+  .buynow{
+    @apply bg-primary text-white px-6 py-2 rounded-2xl 
+  }
+  .buynow:hover{
+    @apply bg-red-500
+  }
+
+  .container
+  {
+      @apply container mx-auto max-w-[1920px];
+  }
+}
