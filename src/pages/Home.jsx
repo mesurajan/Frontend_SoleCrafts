@@ -1,12 +1,17 @@
 import React from 'react'
-import Header from '../component/layouts/Header'
-import Footer from '../component/layouts/Footer'
-
+import Section01 from '../component/HomeSections/Section01'
+import Section02 from '../component/HomeSections/Section02'
 function Home() {
 
 
   return (
-    <div>home is rnning</div>
+    <div className="container text-primary ">
+      <Section01/>
+      <Section02/>
+
+      
+       
+    </div>
   )
 }
 
