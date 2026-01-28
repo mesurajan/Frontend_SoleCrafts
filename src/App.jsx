@@ -4,6 +4,7 @@ import MainLayout from './layouts/MainLayout'
 import Home from './pages/Home'
 import About from './pages/About'
 import Sneakers from './pages/Sneakers'
+import Contact from './pages/Contact'
 function App() {
 
 
@@ -13,6 +14,7 @@ function App() {
     <Route path="/" element={<MainLayout/>}>
     <Route index element={<Home/>}/>
     <Route path="about" element={<About/>}/>
+     <Route path="contact" element={<Contact/>}/>
     <Route path="sneakers" element={<Sneakers/>}/>
 
     
