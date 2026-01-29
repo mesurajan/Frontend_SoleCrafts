@@ -3,7 +3,7 @@ import { ShoppingCart, Search, User } from "lucide-react";// npm install lucide-
 import {NavLink} from 'react-router-dom'
 function Header() {
   return (
-    <div className="container"> 
+    <div className="container bg-background"> 
     <header className="w-full h-full  relative ">
      
       <div className="container mx-auto flex items-center justify-between px-8 md:px-12 py-2 mt-0 pt-4">
@@ -39,7 +39,7 @@ function Header() {
     <div className="flex items-center justify-between h-16 px-8 md:px-12  py-2 relative cursor-auto">
       {/* Left: Logo */}
       <div>
-        <h1 className="text-lg font-semibold tracking-wide">SHOE-STORE</h1>
+        <h1 className="text-lg font-semibold tracking-wide">SOLE-CRAFTS</h1>
       </div>
 
       {/* Right: Nav */}

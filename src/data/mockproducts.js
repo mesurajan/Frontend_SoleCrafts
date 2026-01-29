@@ -1,12 +1,13 @@
 import shoe01 from '../assets/images/shoe.jpg';
 import shoe02 from '../assets/images/shoe02.jpg';
 import shoe03 from '../assets/images/shoe03.jpg';
+import bankqr from '../assets/images/qr.jpg';
 
 const mockProducts = [
   {
     category: "Women",
     products: [
-      { _id: 1, title: "Women Sneakers", price: 120, image: shoe01 },
+      { _id: 1, title: "Women Sneakers", price: 120, image: bankqr },
       { _id: 2, title: "Running Shoes", price: 150, image: shoe02 },
       { _id: 3, title: "Stylish Boots", price: 180, image: shoe03 },
       { _id: 4, title: "Casual Walkers", price: 110, image: shoe01 },
@@ -46,3 +47,6 @@ const mockProducts = [
 ];
 
 export default mockProducts;
+
+
+

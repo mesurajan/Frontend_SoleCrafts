@@ -38,20 +38,20 @@ function Section01() {
   // const goToSlide = (index) => setCurrentIndex(index);
 
   return (
-    <div className="container px-10 mx-auto">
+    <div className="container  mx-auto">
 
-    <div className="relative w-full overflow-hidden rounded-xl shadow-lg">
+    <div className="relative w-full overflow-hidden  shadow-lg">
       {/* Slides */}
       <div
         className="flex transition-transform duration-500"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {slides.map((slide) => (
-          <div key={slide.id} className="w-full flex-shrink-0 relative">
+          <div key={slide.id} className="w-full shrink-0 relative">
             <img
               src={slide.image}
               alt={slide.title}
-              className="w-full h-64 sm:h-80 md:h-[380px] lg:h-[480px] xl:h-[520px] object-cover rounded-xl"
+              className="w-full h-64 sm:h-80 md:h-95 lg:h-120 xl:h-130 object-cover "
             />
 
             {/* Discount Overlay */}
