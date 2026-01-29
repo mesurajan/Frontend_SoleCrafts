@@ -9,8 +9,8 @@ const [name, setName] = useState("");
 
 const Products=[
     {id:1,name:"SportShoes",price:"Rs.2000"},
-        {id:2,name:"PartyShoes",price:"Rs.2000"},
-            {id:3,name:"Shoes",price:"Rs.2000"}
+    {id:2,name:"PartyShoes",price:"Rs.2000"},
+    {id:3,name:"Shoes",price:"Rs.2000"}
 ]
 useEffect(()=>{
     alert("Welcome to Contact Page");

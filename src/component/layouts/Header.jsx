@@ -1,33 +1,11 @@
 import React from "react";
-import LiquidEther from '../ui/LiquidEther';
-import { ShoppingCart, Search, User } from "lucide-react";
+import { ShoppingCart, Search, User } from "lucide-react";// npm install lucide-react
 import {NavLink} from 'react-router-dom'
 function Header() {
   return (
     <div className="container"> 
     <header className="w-full h-full  relative ">
-            <div className="absolute inset-0 z-0">
-              <LiquidEther
-                colors={['#5227FF', '#FF9FFC', '#B19EEF']}
-                mouseForce={20}
-                cursorSize={100}
-                isViscous
-                viscous={30}
-                iterationsViscous={32}
-                iterationsPoisson={32}
-                resolution={0.5}
-                isBounce={false}
-                autoDemo
-                autoSpeed={0.5}
-                autoIntensity={2.2}
-                takeoverDuration={0.25}
-                autoResumeDelay={3000}
-                autoRampDuration={0.6}
-                color0="#5227FF"
-                color1="#FF9FFC"
-                color2="#B19EEF"
-              />
-            </div>
+     
       <div className="container mx-auto flex items-center justify-between px-8 md:px-12 py-2 mt-0 pt-4">
         
         {/* Left: Language + Logo */}
