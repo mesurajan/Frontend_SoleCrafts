@@ -3,11 +3,11 @@ import mockProducts from "../../data/mockproducts";
 import ProductCard from "../product/ProductCard";
 
 function Section02() {
-  const navItems = ["Women", "Men", "Unisex", "Casual"];
+  const navItems = [ "Men", "Women", "Unisex", "Casual"];
   const [activeCategory, setActiveCategory] = useState("Women");
   const [visibleCount, setVisibleCount] = useState(8);
 
-  // FILTER LOGIC (no All)
+  // FILTER LOGIC 
   const filteredProducts =
     mockProducts.find(item => item.category === activeCategory)
       ?.products || [];
@@ -25,19 +25,19 @@ function Section02() {
     <div className="px-4 md:px-0 mx-auto max-w-7xl py-12">
       {/* Heading */}
       <div className="flex justify-center mb-6">
-        <h2 className="text-2xl md:text-4xl font-semibold text-primary">
+        <h2 className="text-2xl md:text-4xl font-semibold text-background">
           Best Seller
         </h2>
       </div>
 
       {/* Navigation tabs */}
-      <ul className="flex justify-center gap-4 md:gap-10 mb-8 text-sm">
+      <ul className="flex justify-center gap-4 md:gap-10 mb-8 text-l">
         {navItems.map(item => (
           <li
             key={item}
             onClick={() => setActiveCategory(item)}
             className={`cursor-pointer font-medium transition-colors duration-300 ${
-              activeCategory === item ? "text-primary" : "text-gray-400"
+              activeCategory === item ? "text-background border-b-3 border-background" : "text-primary hover: transition pb-2"
             }`}
           >
             {item}

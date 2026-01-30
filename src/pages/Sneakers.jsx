@@ -1,11 +1,12 @@
 import React from 'react'
-import Section02 from '../component/HomeSections/Section02'
+import Section03 from '../component/HomeSections/Section03'
 function Sneakers() {
   return (
-    <div>Sneakers
-
-
-      <Section02/>
+    <div>
+      <div className='mt-4'>
+        <Section03/>
+      </div>
+    
     </div>
   )
 }

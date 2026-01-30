@@ -1,10 +1,12 @@
-import shoe01 from "../assets/images/shoe.jpg";
-import shoe02 from "../assets/images/shoe02.jpg";
-import shoe03 from "../assets/images/shoe03.jpg";
-
+import shoe01 from "../assets/images/products/shoe01.png";
+import shoe02 from "../assets/images/products/shoe02.png";
+import shoe03 from "../assets/images/products/shoe03.png";
+import shoe04 from "../assets/images/products/shoe04.png";
+import shoe05 from "../assets/images/products/shoe05.png";
+import shoe06 from "../assets/images/products/shoe06.png";
 const mockProducts = [
   {
-    category: "Women",
+    category: "Men",
     products: [
       {
         _id: 1,
@@ -18,7 +20,6 @@ const mockProducts = [
         inStock: true,
         gender: "Women",
         description: "Lightweight sneakers designed for daily comfort.",
-        images: [shoe01, shoe02],
         availableSizes: [36, 37, 38, 39, 40],
         colors: ["White", "Pink"],
         material: "Mesh",
@@ -44,7 +45,6 @@ const mockProducts = [
         inStock: true,
         gender: "Women",
         description: "High performance running shoes.",
-        images: [shoe02],
         availableSizes: [37, 38, 39, 40, 41],
         colors: ["Black", "Purple"],
         material: "Mesh",
@@ -70,7 +70,6 @@ const mockProducts = [
         inStock: true,
         gender: "Women",
         description: "Comfortable walkers for everyday use.",
-        images: [shoe03],
         availableSizes: [36, 37, 38, 39],
         colors: ["Grey"],
         material: "Canvas",
@@ -95,8 +94,7 @@ const mockProducts = [
         reviewsCount: 88,
         inStock: true,
         gender: "Women",
-        description: "Stylish sneakers with modern design.",
-        images: [shoe01],
+        description: "Stylish sneakers with modern design.", 
         availableSizes: [37, 38, 39, 40],
         colors: ["White", "Blue"],
         material: "Synthetic",
@@ -108,7 +106,7 @@ const mockProducts = [
         deliveryInfo: "3-4 days",
         returnPolicy: "7 days return",
         paymentMethods: ["COD", "QR"],
-        image: shoe01,
+        image: shoe04,
       },
       {
         _id: 5,
@@ -122,7 +120,6 @@ const mockProducts = [
         inStock: true,
         gender: "Women",
         description: "Ideal for gym and workouts.",
-        images: [shoe02],
         availableSizes: [38, 39, 40, 41],
         colors: ["Black"],
         material: "Knit Mesh",
@@ -134,7 +131,7 @@ const mockProducts = [
         deliveryInfo: "3-6 days",
         returnPolicy: "7 days return",
         paymentMethods: ["COD"],
-        image: shoe02,
+        image: shoe05,
       },
       {
         _id: 6,
@@ -160,13 +157,66 @@ const mockProducts = [
         deliveryInfo: "2 days",
         returnPolicy: "7 days return",
         paymentMethods: ["COD"],
+        image: shoe06,
+      },
+
+         {
+        _id: 70,
+        title: "Women Air Sneakers",
+        brand: "UrbanWalk",
+        price: 140,
+        discount: 10,
+        finalPrice: 126,
+        rating: 4.6,
+        reviewsCount: 120,
+        inStock: true,
+        gender: "Women",
+        description: "Lightweight sneakers designed for daily comfort.",
+        availableSizes: [36, 37, 38, 39, 40],
+        colors: ["White", "Pink"],
+        material: "Mesh",
+        soleMaterial: "Rubber",
+        fitType: "Regular",
+        features: ["Breathable", "Soft cushioning"],
+        weight: "480g",
+        origin: "Made in Nepal",
+        deliveryInfo: "2-4 days",
+        returnPolicy: "7 days return",
+        paymentMethods: ["COD", "QR"],
         image: shoe03,
+      },
+
+
+         {
+        _id: 80,
+        title: "Women Air Sneakers",
+        brand: "UrbanWalk",
+        price: 140,
+        discount: 10,
+        finalPrice: 126,
+        rating: 4.6,
+        reviewsCount: 120,
+        inStock: true,
+        gender: "Women",
+        description: "Lightweight sneakers designed for daily comfort.",
+        availableSizes: [36, 37, 38, 39, 40],
+        colors: ["White", "Pink"],
+        material: "Mesh",
+        soleMaterial: "Rubber",
+        fitType: "Regular",
+        features: ["Breathable", "Soft cushioning"],
+        weight: "480g",
+        origin: "Made in Nepal",
+        deliveryInfo: "2-4 days",
+        returnPolicy: "7 days return",
+        paymentMethods: ["COD", "QR"],
+        image: shoe01,
       },
     ],
   },
 
   {
-    category: "Men",
+    category: "Women",
     products: [
       {
         _id: 7,
