@@ -12,18 +12,22 @@ function Home() {
 
   useEffect(() => {
       const user = JSON.parse(localStorage.getItem("user"));
-        toast.success(
-          user
-            ? `Welcome back, ${user.name}!`
-            : "Welcome to SOLE CRAFTS — discover your next step.",
-          {
-            className: "bg-background text-white font-semibold px-6 py-4 rounded-lg shadow-lg",
-            duration: 4000,
-          }
-        );
+      const hasVisited = localStorage.getItem("shoeshop_visited");
+
+      if (!hasVisited) {
+      toast.success(
+            user
+              ? `Welcome back, ${user.name}!`
+              : "Welcome to SOLE CRAFTS — discover your next step.",
+            {
+              className: "bg-background text-white font-semibold px-6 py-4 rounded-lg shadow-lg",
+            
+              duration: 3000,
+            }
+          );
         localStorage.setItem("shoeshop_visited", "true");
-      },
-     []);
+      }
+    }, []);
 
   
  
