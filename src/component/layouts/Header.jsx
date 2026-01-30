@@ -3,7 +3,7 @@ import { ShoppingCart, Search, User } from "lucide-react";// npm install lucide-
 import {NavLink} from 'react-router-dom'
 function Header() {
   return (
-    <div className="container bg-background"> 
+    <div className="container bg-background text-text"> 
     <header className="w-full h-full  relative ">
      
       <div className="container mx-auto flex items-center justify-between px-8 md:px-12 py-2 mt-0 pt-4">
@@ -11,8 +11,8 @@ function Header() {
         {/* Left: Language + Logo */}
         <div className="flex items-center gap-6">
           <select className="text-sm outline-none bg-transparent">
-            <option>EN</option>
-            <option>NP</option>
+            <option className="text-primary">EN</option>
+            <option className="text-primary">NP</option>
           </select>
         </div>
 
@@ -36,19 +36,19 @@ function Header() {
         </div>
       </div>
 
-    <div className="flex items-center justify-between h-16 px-8 md:px-12  py-2 relative cursor-auto">
+    <div className="flex items-center justify-between h-14 px-8 md:px-12  py-1 relative cursor-auto">
       {/* Left: Logo */}
       <div>
         <h1 className="text-lg font-semibold tracking-wide">SOLE-CRAFTS</h1>
       </div>
 
       {/* Right: Nav */}
-      <nav className="hidden md:flex items-center gap-20 mr-8 text-sm font-medium">
+      <nav className="hidden md:flex items-center gap-14 mr-8 text-sm font-medium">
       <NavLink  to="/"
         className={({ isActive }) =>
           isActive
-            ? "text-primary border-b-3 border-primary font-semibold"
-            : "hover:text-primary transition pb-2"
+            ? "text-text border-b-3 border-text font-semibold"
+            : "hover: transition pb-2"
         }
       >
         HOME
@@ -57,8 +57,8 @@ function Header() {
       <NavLink to="/sneakers"
         className={({ isActive }) =>
           isActive 
-                    ? "text-primary border-b-3 border-primary font-semibold"
-                    : "hover:text-primary transition pb-2"
+                    ? " border-b-3 border-text font-semibold"
+                    : "hover: transition pb-2"
         }
       >
         SNEAKERS
@@ -68,8 +68,8 @@ function Header() {
         to="/about"
         className={({ isActive }) =>
           isActive 
-                    ? "text-primary border-b-3 border-primary font-semibold"
-                    : "hover:text-primary transition pb-2"
+                    ? " border-b-3 border-text font-semibold"
+                    : "hover: transition pb-2"
         }
       >
         ABOUT
@@ -79,8 +79,8 @@ function Header() {
         to="/contact"
         className={({ isActive }) =>
           isActive 
-                    ? "text-primary border-b-3 border-primary font-semibold"
-                    : "hover:text-primary transition pb-2"
+                    ? " border-b-3 border-text font-semibold"
+                    : "hover: transition pb-2"
         }
       >
         CONTACT

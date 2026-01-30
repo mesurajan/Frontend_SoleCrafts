@@ -35,7 +35,6 @@ function Section01() {
     return () => clearInterval(interval);
   }, []);
 
-  // const goToSlide = (index) => setCurrentIndex(index);
 
   return (
     <div className="container  mx-auto">

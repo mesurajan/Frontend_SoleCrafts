@@ -3,18 +3,16 @@ import mockProducts from "../../data/mockproducts";
 import ProductCard from "../product/ProductCard";
 
 function Section02() {
-  const navItems = ["All", "Women", "Men", "Unisex", "Casual"];
-  const [activeCategory, setActiveCategory] = useState("All");
-  const [visibleCount, setVisibleCount] = useState(8); // initially show 8
+  const navItems = ["Women", "Men", "Unisex", "Casual"];
+  const [activeCategory, setActiveCategory] = useState("Women");
+  const [visibleCount, setVisibleCount] = useState(8);
 
-  // FILTER LOGIC
+  // FILTER LOGIC (no All)
   const filteredProducts =
-    activeCategory === "All"
-      ? mockProducts.flatMap(item => item.products)
-      : mockProducts.find(item => item.category === activeCategory)
-          ?.products || [];
+    mockProducts.find(item => item.category === activeCategory)
+      ?.products || [];
 
-  // Products to display based on visibleCount
+  // Products to display
   const visibleProducts = filteredProducts.slice(0, visibleCount);
 
   // Load more handler
@@ -22,16 +20,12 @@ function Section02() {
     setVisibleCount(prev => prev + 4);
   };
 
-  // Reset visibleCount when category changes
-  React.useEffect(() => {
-    setVisibleCount(8);
-  }, [activeCategory]);
-
+  
   return (
     <div className="px-4 md:px-0 mx-auto max-w-7xl py-12">
       {/* Heading */}
       <div className="flex justify-center mb-6">
-        <h2 className="text-2xl md:text-4xl font-semibold text-[#0A174E]">
+        <h2 className="text-2xl md:text-4xl font-semibold text-primary">
           Best Seller
         </h2>
       </div>
@@ -43,7 +37,7 @@ function Section02() {
             key={item}
             onClick={() => setActiveCategory(item)}
             className={`cursor-pointer font-medium transition-colors duration-300 ${
-              activeCategory === item ? "text-[#0A174E]" : "text-gray-400"
+              activeCategory === item ? "text-primary" : "text-gray-400"
             }`}
           >
             {item}
@@ -65,7 +59,7 @@ function Section02() {
             <div className="flex justify-center mt-8">
               <button
                 onClick={handleLoadMore}
-                className="px-6 py-2 bg-[#0A174E] text-white rounded-md font-medium hover:bg-[#081243] transition"
+                className="px-6 py-2 bg-primary text-white rounded-md font-medium hover:bg-[#081243] transition"
               >
                 Load More
               </button>
