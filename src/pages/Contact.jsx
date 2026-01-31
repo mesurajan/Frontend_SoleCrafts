@@ -44,8 +44,8 @@ function Contact() {
     {/* main body */}
       <div className='flex flex-col md:flex-row text-center justify-center mt-4 md:mt-6 mb-10 '>
        <div className='flex justify-center items-start flex-col gap-4 md:w-2/3 md:px-10'>
-        <h1 className='text-2xl font-semibold md:font-bold md:text-4xl px-4'>Information About Us</h1>
-        <p className='text-justify p-4 md:w-[95%]'>
+        <h1 className='text-2xl font-semibold md:font-bold md:text-4xl px-4 text-background'>Information About Us</h1>
+        <p className='text-justify p-4 md:w-[95%] text-background'>
         At SoleCraft, we believe the right pair of shoes can change how you move, feel, and express yourself. 
         Our goal is to deliver footwear that blends comfort, durability, and modern style for every step of your journey.
         From everyday casual wear to performance-ready sneakers, we design shoes that fit your lifestyle perfectly.
@@ -61,19 +61,19 @@ function Contact() {
 
         {/* Contact Way */}
         <div className="flex justify-start items-center flex-col gap-4">
-          <h1 className="text-2xl font-semibold md:font-bold md:text-4xl mb-4 px-4">
+          <h1 className="text-2xl font-semibold md:font-bold md:text-4xl mb-4 px-4 text-background">
             Contact Way
           </h1>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full px-4">
             {/* first one */}
-            <div className="flex items-center space-x-3 bg-gray-50 p-4 rounded-lg shadow-sm hover:shadow-md transition">
+            <div className="flex items-center space-x-3  bg-gray-50 p-4 rounded-lg shadow-sm hover:shadow-md transition">
               <img 
                 src={Call} 
                 alt="Call" 
                 className="w-12 h-12 rounded-full object-cover"
               />
-              <div className="text-gray-700 text-sm text-left">
+              <div className="text-background text-sm text-left">
                 <p className="font-medium">Tel: +977 9816413787</p>
                 <p className="font-medium">Email: support@solecraftshoe.com</p>
               </div>
@@ -86,7 +86,7 @@ function Contact() {
                 alt="Telephone" 
                 className="w-12 h-12 rounded-full object-cover"
               />
-              <div className="text-gray-700 text-sm text-left">
+              <div className="text-background text-sm text-left">
                 <p className="font-medium">Support Forums </p>
                 <p className="font-medium">24/7 Open For All</p>
               </div>
@@ -99,7 +99,7 @@ function Contact() {
                 alt="Location" 
                 className="w-12 h-12 rounded-full object-cover"
               />
-              <div className="text-gray-700 text-sm text-left">
+              <div className="text-background text-sm text-left">
                 <p className="font-medium">Sainamaina -10 Saljhandi</p>
                 <p className="font-medium">Rupandehi, Mahindra highway</p>
               </div>
@@ -112,7 +112,7 @@ function Contact() {
                 alt="delivery" 
                 className="w-12 h-12 rounded-full object-cover"
               />
-              <div className="text-gray-700 text-sm text-left">
+              <div className="text-background text-sm text-left">
                 <p className="font-medium">Free standard Delivery</p>
                 <p className="font-medium">all over Nepal</p>
               </div>
@@ -120,14 +120,14 @@ function Contact() {
           </div>
 
           <section className="mt-14 mb-10 flex flex-col items-center text-center gap-6 px-6">
-          <h2 className="text-2xl md:text-3xl font-bold">Why Choose Us?</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-background">Why Choose Us?</h2>
           <img 
             src={Whyus} 
             alt="Why Choose Us" 
             className="w-full md:w-[95%] lg:w-[95%] object-contain rounded-md shadow-md hover:scale-105 transition"
           />
           
-          <p className="max-w-2xl text-justify items-start py-4 ">
+          <p className="max-w-2xl text-justify items-start py-4  text-background ">
            At SoleCraft, we combine innovative design, premium materials, and everyday comfort to create shoes you’ll 
            love wearing. Our footwear is crafted to support your feet while keeping you stylish in every situation.
           We are committed to reliable quality, affordable pricing, and customer-first service. Whether you’re walking,
@@ -140,16 +140,16 @@ function Contact() {
 
 
       {/* GET IN TOUCH */}
-      <section className="py-2 bg-white container px-2 md:px-12">
+      <section className="py-2 container px-2 md:px-12">
         <div className=" mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 px-6 items-center">
 
           {/* LEFT SIDE */}
           <div className="flex flex-col gap-8">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-left">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-left text-background">
                 Get In Touch
               </h2>
-              <p className="text-gray-600 text-left max-w-xl">
+              <p className="text-background text-left max-w-xl">
                 We’d love to hear from you! Whether you have a question about sizing,
                 delivery, or product details, our team is always ready to help.
                 Reach out anytime — we’re here to make your shoe shopping smooth and satisfying.
