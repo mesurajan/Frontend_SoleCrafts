@@ -8,29 +8,31 @@ import { Link, NavLink } from "react-router-dom";
 
 function Header() {
   return (
-    <header className="bg-background text-text">
+    <div className="container bg-background">
+
+    
+    <header className="text-sm fixed top-0 left-0 right-0 z-50 mb-40 bg-background">
 
       {/* TOP BAR */}
-      <div className="container mx-auto flex items-center justify-between px-8 md:px-12 py-3 text-sm">
+      <div className="container flex flex-col gap-2 px-3 sm:px-3 md:px-12  py-2 text-white md:flex-row md:justify-between md:items-center">
 
         {/* Contact info */}
-        <div className="flex items-center gap-8">
-          <a
-            href="mailto:support@solecraftshoe.com"
-            className="flex items-center gap-2"
-          >
-            <CiMail />
-            <span>support@solecraftshoe.com</span>
-          </a>
+            <div className="flex items-center gap-8">
+              <div className="flex items-center gap-1 md:gap-4 cursor-pointer sm:px-6">
+                <CiMail />
+                <a href="mailto:hetkofurniture@gmail.com">
+                  <p>support@solecrafts.com</p>
+                </a>
+              </div>
+              <div className="flex items-center gap-1">
+                <MdOutlinePhoneInTalk className="cursor-pointer" />
+                <a href="tel:+1234567890"> +977 9816413787</a>
+              </div>
+            </div>
 
-          <a href="tel:+9779816413787" className="flex items-center gap-2">
-            <MdOutlinePhoneInTalk />
-            <span>+977 9816413787</span>
-          </a>
-        </div>
 
         {/* Right actions */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-8 text-text">
 
           {/* Language selector */}
           <div className="relative group">
@@ -83,13 +85,13 @@ function Header() {
       </div>
 
       {/* NAV BAR */}
-      <div className="container mx-auto flex items-center justify-between px-8 md:px-12 h-14">
+      <div className="container mx-auto flex items-center justify-between px-3 sm:px-3 md:px-12 h-14">
 
-        <h1 className="text-lg font-semibold tracking-wide">
+        <h1 className="text-lg font-semibold tracking-wide text-text">
           SOLE-CRAFTS
         </h1>
 
-        <nav className="hidden md:flex items-center gap-16 text-sm font-medium">
+        <nav className="hidden md:flex items-center gap-16 text-sm font-medium text-text">
           {["/", "/product", "/contact", "/orders"].map((path, i) => {
             const labels = ["HOME", "SHOP", "CONTACT", "ORDERS"];
             return (
@@ -110,6 +112,7 @@ function Header() {
       </div>
 
     </header>
+    </div>
   );
 }
 

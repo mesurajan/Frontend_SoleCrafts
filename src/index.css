@@ -8,6 +8,16 @@
 
 
 }
+:root {
+  --color-primary: #0A174E;
+  --color-bgbackground: #ffffff;
+}
+
+body {
+  background: var(--color-bgbackground);
+  color: var(--color-text);
+}
+
 
 @layer Components{
 
@@ -19,7 +29,7 @@
 
 
    .viewdetails-btn{
-    @apply bg-background text-white text-[10px]  md:text-[15px] py-[6px] px-[12px] md:py-[12px] md:px-[25px] rounded-[6px] transition-all duration-300 ease-in-out cursor-pointer;
+    @apply bg-background text-white text-[8px]  md:text-[15px] py-2 px-3 md:py-3 md:px-6.25 rounded-md transition-all duration-300 ease-in-out cursor-pointer;
 
   }
    .viewdetails-btn:hover{
@@ -27,7 +37,7 @@
   }
 
   .buynow-btn{
-    @apply bg-[#034C36] text-white text-[10px]  md:text-[15px]  py-[4px] px-[12px] md:py-[12px] md:px-[25px] rounded-[6px] transition-all duration-300 ease-in-out cursor-pointer;
+    @apply bg-[#034C36] text-white text-[8px]  md:text-[15px]  py-2 px-3 md:py-3 md:px-6.25 rounded-md transition-all duration-300 ease-in-out cursor-pointer;
   }
   .buynow-btn:hover{
     @apply bg-[#003332] shadow-lg scale-105 brightness-110;

@@ -10,6 +10,10 @@ import SignupPage from './pages/auth/SignupPage'
 import Products from './pages/Products';
 import ProductDetails from "./component/product/ProductDetails";
 import Orders from './pages/Orders';
+import WishList from './pages/WishList';
+import Cart from './pages/Cart';
+import ProtectedRoute from './hoc/ProtectedRoutes';
+
 function App() {
 
 
@@ -24,6 +28,9 @@ function App() {
       <Route path="orders" element={<Orders/>}/>
       <Route path="product" element={<Products/>}/>
       <Route path="/product/:id" element={<ProductDetails />} />
+
+      <Route path="wishlist" element={<ProtectedRoute><WishList/></ProtectedRoute>}/>
+      <Route path="cart" element={<ProtectedRoute><Cart/></ProtectedRoute>}/>
     </Route>
 
 

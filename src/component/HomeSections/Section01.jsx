@@ -36,7 +36,7 @@ function Section01() {
   }, []);
 
   return (
-    <div className="container mx-auto relative overflow-hidden">
+    <div className="container mx-auto relative overflow-hidden mt-22">
       {/* Slider */}
       <div
         className="flex transition-transform duration-700 ease-in-out"
