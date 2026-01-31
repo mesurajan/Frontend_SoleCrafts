@@ -39,7 +39,7 @@ function Contact() {
   };
 
   return (
-    <div className='container text-mainbackground'>
+    <div className='container text-background mt-36'>
   
     {/* main body */}
       <div className='flex flex-col md:flex-row text-center justify-center mt-4 md:mt-6 mb-10 '>
@@ -140,7 +140,7 @@ function Contact() {
 
 
       {/* GET IN TOUCH */}
-      <section className="py-20 bg-white container px-8 md:px-12">
+      <section className="py-2 bg-white container px-2 md:px-12">
         <div className=" mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 px-6 items-center">
 
           {/* LEFT SIDE */}

@@ -2,7 +2,11 @@ import React from 'react'
 
 function WishList() {
   return (
-    <div>WishList</div>
+    <div className='mt-38'>
+      WishList
+         <div>sssssss</div>
+      </div>
+   
   )
 }
 

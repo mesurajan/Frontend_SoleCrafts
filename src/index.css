@@ -5,6 +5,7 @@
   --color-primary:#0A174E;
   --color-background:#22123C;
   --color-text:#ffffff;
+  --color-primarytext:#22123C;
 
 
 }
@@ -15,7 +16,7 @@
 
 body {
   background: var(--color-bgbackground);
-  color: var(--color-text);
+  color: var(--color-primarytext);
 }
 
 

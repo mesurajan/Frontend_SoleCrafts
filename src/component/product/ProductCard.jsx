@@ -2,20 +2,26 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaRegHeart } from "react-icons/fa";
 import { ShoppingCart } from "lucide-react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../apps/Reducers/CartSlice"
 
 function ProductCard({ product }) {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
+  
   const handleWishlist = () => {
+    
     console.log("Wishlist:", product._id);
   };
 
   const handleCart = () => {
+      dispatch(addToCart(product));
     console.log("Add to cart:", product._id);
   };
 
   const handleBuyNow = () => {
-    navigate(`/checkout/${product._id}`);
+    dispatch(addToCart(product));
+    navigate("/cart");
   };
 
   const productLink = `/product/${product._id}`;

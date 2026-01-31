@@ -5,8 +5,11 @@ import { MdOutlinePhoneInTalk } from "react-icons/md";
 import { FaRegHeart } from "react-icons/fa";
 import { BsCart } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Header() {
+    const cartCount = useSelector((state) => state.cart.count);
+
   return (
     <div className="container bg-background">
 
@@ -71,9 +74,11 @@ function Header() {
           {/* Cart */}
           <Link to="/cart" className="relative h-10 w-10 flex items-center justify-center">
             <BsCart />
-            <span className="absolute top-1 right-1 h-4 w-4 text-xs flex items-center justify-center text-white bg-red-500 rounded-full">
-              3
-            </span>
+             {cartCount > 0 && (
+              <span className="absolute top-1 right-1 h-4 w-4 text-xs flex items-center justify-center text-white bg-red-500 rounded-full">
+                {cartCount}
+              </span>)}
+                
           </Link>
 
           {/* Profile */}
