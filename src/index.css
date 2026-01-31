@@ -9,15 +9,6 @@
 
 
 }
-:root {
-  --color-primary: #0A174E;
-  --color-bgbackground: #ffffff;
-}
-
-body {
-  background: var(--color-bgbackground);
-  color: var(--color-primarytext);
-}
 
 
 @layer Components{
