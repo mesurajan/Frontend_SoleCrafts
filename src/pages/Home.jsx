@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Section01 from '../component/HomeSections/Section01';
 import Section02 from '../component/HomeSections/Section02';
 import Section03 from '../component/HomeSections/Section03';
+import Section04 from '../component/HomeSections/Section04';
 import { Truck, RefreshCcw, Headphones } from "lucide-react";
 import toast from "react-hot-toast";
 
@@ -60,6 +61,7 @@ function Home() {
             </div>
       </section>
 
+        <Section04/>
       
        
     </div>

@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router';
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 
 function Footer() {
   return (
-<div className="relative w-full h-full bg-background text-text">
+<div className="relative w-full h-full bg-background text-text container">
   
       {/* Footer content above animation */}
       <footer className="relative z-10 text-text  container mx-auto px-8 md:px-12 py-6 md:py-10 md:pt-20">
@@ -94,7 +95,10 @@ function Footer() {
         <div>
           <h3 className="text-sm font-bold  uppercase tracking-wider">My Account</h3>
           <ul className="mt-4 space-y-3 text-sm ">
-            <li className="hover:text-blue-600 cursor-pointer transition-colors">Login / Register</li>
+            <li className="hover:text-blue-600 cursor-pointer transition-colors">
+              <Link to="/login">Login / Register</Link>
+            </li>
+
             <li className="hover:text-blue-600 cursor-pointer transition-colors">Order History</li>
             <li className="hover:text-blue-600 cursor-pointer transition-colors">Wishlist</li>
             <li className="hover:text-blue-600 cursor-pointer transition-colors">Track Order</li>

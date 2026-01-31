@@ -12,8 +12,8 @@ function LoginPage() {
 
   const MOCK_USER = {
     id: "mock-user-001",
-    email: "surajan@gmail.com",
-    password: "Surajan@9252$$",
+    email: "Surajan@gmail.com",
+    password: "test",
     role: "user",
     name: "Surajan shrestha",
   };

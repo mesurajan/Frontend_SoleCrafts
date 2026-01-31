@@ -4,11 +4,12 @@ import { Route,Routes } from 'react-router'
 import MainLayout from './layouts/MainLayout'
 import Home from './pages/Home'
 import About from './pages/About'
-import Sneakers from './pages/Sneakers'
 import Contact from './pages/Contact'
 import LoginPage from './pages/auth/LoginPage'
 import SignupPage from './pages/auth/SignupPage'
-
+import Products from './pages/Products';
+import ProductDetails from "./component/product/ProductDetails";
+import Orders from './pages/Orders';
 function App() {
 
 
@@ -20,7 +21,9 @@ function App() {
       <Route index element={<Home/>}/>
       <Route path="about" element={<About/>}/>
       <Route path="contact" element={<Contact/>}/>
-      <Route path="sneakers" element={<Sneakers/>}/>
+      <Route path="orders" element={<Orders/>}/>
+      <Route path="product" element={<Products/>}/>
+      <Route path="/product/:id" element={<ProductDetails />} />
     </Route>
 
 

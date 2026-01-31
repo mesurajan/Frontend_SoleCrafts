@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
-import G14 from "../assets/images/about/g14.png";
-import Tel from "../assets/images/about/tel.png";
+import G14 from "../assets/images/contact/g14.png";
+import Tel from "../assets/images/contact/tel.png";
 import Call from "../assets/images/offer/call.png";
 import Car from "../assets/images/offer/car.png";
-import Location from "../assets/images/about/location.png";
-import Warehouse from "../assets/images/about/warehouse.png";
-import Whyus from "../assets/images/about/whyus.png";
+import Location from "../assets/images/contact/location.png";
+import Warehouse from "../assets/images/contact/warehouse.png";
+import Whyus from "../assets/images/contact/whyus.png";
 import { toast } from "react-hot-toast";
 
 function Contact() {
@@ -127,7 +127,7 @@ function Contact() {
             className="w-full md:w-[95%] lg:w-[95%] object-contain rounded-md shadow-md hover:scale-105 transition"
           />
           
-          <p className="max-w-2xl text-justify py-4 ">
+          <p className="max-w-2xl text-justify items-start py-4 ">
            At SoleCraft, we combine innovative design, premium materials, and everyday comfort to create shoes you’ll 
            love wearing. Our footwear is crafted to support your feet while keeping you stylish in every situation.
           We are committed to reliable quality, affordable pricing, and customer-first service. Whether you’re walking,
@@ -139,41 +139,49 @@ function Contact() {
       </div>
 
 
+      {/* GET IN TOUCH */}
+      <section className="py-20 bg-white container px-8 md:px-12">
+        <div className=" mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 px-6 items-center">
 
-      <div className='flex flex-col md:flex-row text-center justify-center  mt-10 mb-10 gap-6 '>
-        <div className='md:w-1/2 flex flex-col justify-center items-center gap-6 transition transform hover:scale-105'> 
-          <div className=''>
-          <p className='font-bold text-2xl md:text-4xl'>Get In Touch</p>
-          <p className='text-justify px-6 py-6 md:py-10 md:w-165'>
-            We’d love to hear from you! Whether you have a question about sizing, delivery, or product details, 
-            our team is always ready to help. Your feedback helps us improve and deliver better footwear experiences. 
-            Reach out anytime — we’re here to make your shoe shopping smooth and satisfying.
-        </p>
-          </div>
-
-          {/* form section */}
-            <form onSubmit={handleSubmit}>
-            <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name*"
-                value={form.name}
-                onChange={handleChange}
-                required
-                className="w-80 md:w-65 h-10 rounded-sm text-black p-4 border-[1px] border-gray-300"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email*"
-                value={form.email}
-                onChange={handleChange}
-                required
-                className="w-80 md:w-95 h-10 rounded-sm text-black p-4 border-[1px] border-gray-300"
-              />
-            </div>
+          {/* LEFT SIDE */}
+          <div className="flex flex-col gap-8">
             <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-left">
+                Get In Touch
+              </h2>
+              <p className="text-gray-600 text-left max-w-xl">
+                We’d love to hear from you! Whether you have a question about sizing,
+                delivery, or product details, our team is always ready to help.
+                Reach out anytime — we’re here to make your shoe shopping smooth and satisfying.
+              </p>
+            </div>
+
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col gap-4 max-w-xl"
+            >
+              {/* Name + Email */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name*"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full h-11 border border-gray-300 rounded-md px-4 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email*"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full h-11 border border-gray-300 rounded-md px-4 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+              </div>
+
               <input
                 type="text"
                 name="subject"
@@ -181,36 +189,43 @@ function Contact() {
                 value={form.subject}
                 onChange={handleChange}
                 required
-                className="w-80 md:w-165 h-10 rounded-sm text-black p-4 border-[1px] border-gray-300 mt-4"
+                className="w-full h-11 border border-gray-300 rounded-md px-4 focus:outline-none focus:ring-2 focus:ring-primary"
               />
+
               <textarea
                 name="message"
                 placeholder="Type Your Message*"
                 value={form.message}
                 onChange={handleChange}
                 required
-                className="w-80 md:w-165 h-32 rounded-sm text-black p-4 border-[1px] border-gray-300 mt-4"
+                rows={5}
+                className="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
               />
-            </div>
-            <div className="flex justify-start items-start px-8 md:px-14">
+
               <button
                 type="submit"
-                className="bg-primary text-gray-300 w-80 md:w-65 h-10 rounded-sm mt-4 transition-transform hover:scale-105"
+                className="w-40 h-11 bg-primary text-white rounded-md mt-2 hover:scale-105 transition-transform"
               >
                 Submit
               </button>
+            </form>
+          </div>
+
+          {/* RIGHT SIDE */}
+          <div className="flex justify-start">
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <img
+                src={G14}
+                alt="Get In Touch"
+                className="w-full rounded-md hover:scale-105 transition-transform"
+              />
             </div>
-          </form>
+          </div>
+
         </div>
+      </section>
 
-        <div className='p-4 md:p-0 md:py-14'>
-          <img src={G14} alt="Get In Touch"
-           className='bg-mainbackground rounded-md transform transition hover:scale-105' />
-        </div>
-      </div>
-
-
-    
+ 
     </div>
   )
 }

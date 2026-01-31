@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from "react";
-import shoe01 from '../../assets/images/shoe.jpg';
-import shoe02 from '../../assets/images/shoe02.jpg';
-import shoe03 from '../../assets/images/shoe03.jpg';
+import shoe01 from "../../assets/images/Banner/banner01.jpg";
+import shoe02 from "../../assets/images/Banner/banner02.jpg";
+import shoe03 from "../../assets/images/Banner/banner03.jpg";
 
 const slides = [
   {
     id: 1,
     image: shoe01,
-    title: "Sneakers",
-    discount: "20% OFF",
+    title: "",
+    discount: "",
   },
   {
     id: 2,
     image: shoe02,
-    title: "Running Shoes",
-    discount: "30% OFF",
+    title: "",
+    discount: "",
   },
   {
     id: 3,
     image: shoe03,
-    title: "Boots",
-    discount: "15% OFF",
+    title: "",
+    discount: "",
   },
 ];
 
@@ -35,14 +35,11 @@ function Section01() {
     return () => clearInterval(interval);
   }, []);
 
-
   return (
-    <div className="container  mx-auto">
-
-    <div className="relative w-full overflow-hidden  shadow-lg">
-      {/* Slides */}
+    <div className="container mx-auto relative overflow-hidden">
+      {/* Slider */}
       <div
-        className="flex transition-transform duration-500"
+        className="flex transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {slides.map((slide) => (
@@ -50,13 +47,22 @@ function Section01() {
             <img
               src={slide.image}
               alt={slide.title}
-              className="w-full h-64 sm:h-80 md:h-95 lg:h-120 xl:h-130 object-cover "
+                className="w-full h-65 sm:h-85 md:h-105 lg:h-125 xl:h-145 object-cover"
             />
 
-            {/* Discount Overlay */}
-            <div className="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white px-4 py-2 rounded-lg">
-              <h3 className="font-semibold text-lg">{slide.title}</h3>
-              <span className="text-sm">{slide.discount}</span>
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 "></div>
+
+            {/* Text on Image */}
+            <div className="absolute inset-0 flex items-center">
+              <div className="ml-6 sm:ml-10 md:ml-25 text-white ">
+                <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold leading-tight">
+                  {slide.title}
+                </h2>
+                <p className="mt-2 text-xl sm:text-2xl md:text-3xl font-semibold">
+                  {slide.discount}
+                </p>
+              </div>
             </div>
           </div>
         ))}
@@ -67,17 +73,13 @@ function Section01() {
         {slides.map((_, idx) => (
           <button
             key={idx}
-            className={`w-6 h-2 rounded-xl ${
-              idx === currentIndex ? "bg-blue-600" : "bg-gray-400"
-            }`}
             onClick={() => setCurrentIndex(idx)}
+            className={`w-6 h-2 rounded-full transition-all ${
+              idx === currentIndex ? "bg-white" : "bg-white/50"
+            }`}
           />
         ))}
       </div>
-    </div>
-
-
-      
     </div>
   );
 }

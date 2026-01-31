@@ -700,6 +700,8 @@ const mockProducts = [
       },
     ],
   },
+  
+  
 ];
 
 export default mockProducts;

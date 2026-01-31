@@ -4,8 +4,8 @@ import ProductCard from "../product/ProductCard";
 
 function Section02() {
   const navItems = [ "Men", "Women", "Unisex", "Casual"];
-  const [activeCategory, setActiveCategory] = useState("Women");
-  const [visibleCount, setVisibleCount] = useState(8);
+  const [activeCategory, setActiveCategory] = useState("Men");
+  const [visibleCount, setVisibleCount] = useState(4);
 
   // FILTER LOGIC 
   const filteredProducts =
@@ -22,7 +22,7 @@ function Section02() {
 
   
   return (
-    <div className="px-4 md:px-0 mx-auto max-w-7xl py-12">
+    <div className="px-8 mx-auto container py-12">
       {/* Heading */}
       <div className="flex justify-center mb-6">
         <h2 className="text-2xl md:text-4xl font-semibold text-background">
