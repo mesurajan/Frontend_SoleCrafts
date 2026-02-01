@@ -29,7 +29,7 @@ function Cart() {
           </div>
 
           <button
-            onClick={() => dispatch(removeFromCart(item._id))}
+          onClick={() => dispatch(removeFromCart(item._id))}
             className="viewdetails-btn"
           >
             Remove

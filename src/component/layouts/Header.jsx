@@ -8,8 +8,8 @@ import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function Header() {
-    const cartCount = useSelector((state) => state.cart.count);
-
+const cartCount = useSelector((state) => state.cart.count);
+// const WishListCount = useSelector((state) => state.WishList.count);
   return (
     <div className="container bg-background">
 
@@ -66,19 +66,21 @@ function Header() {
           <Link to="/wishlist" className="relative flex items-center gap-1">
             <span className="hidden md:inline">Wishlist</span>
             <FaRegHeart />
-            <span className="absolute -top-2 -right-2 h-4 w-4 text-xs flex items-center justify-center text-white bg-red-500 rounded-full">
-              2
-            </span>
+            {/* {WishListCount > 0 && (
+              <span className="absolute top-1 right-1 h-4 w-4 text-xs flex items-center justify-center text-white bg-red-500 rounded-full">
+                {WishListCount}
+              </span>)} */}
+           
           </Link>
 
           {/* Cart */}
           <Link to="/cart" className="relative h-10 w-10 flex items-center justify-center">
             <BsCart />
-             {cartCount > 0 && (
+            {cartCount > 0 && (
               <span className="absolute top-1 right-1 h-4 w-4 text-xs flex items-center justify-center text-white bg-red-500 rounded-full">
                 {cartCount}
               </span>)}
-                
+                 
           </Link>
 
           {/* Profile */}

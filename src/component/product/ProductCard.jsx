@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaRegHeart } from "react-icons/fa";
 import { ShoppingCart } from "lucide-react";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../apps/Reducers/CartSlice"
+import { addToCart } from "../../apps/Reducers/cartSlice"
 
 function ProductCard({ product }) {
   const navigate = useNavigate();
@@ -15,8 +15,8 @@ function ProductCard({ product }) {
   };
 
   const handleCart = () => {
-      dispatch(addToCart(product));
-    console.log("Add to cart:", product._id);
+     dispatch(addToCart(product));
+    console.log("Added to cart:", product._id);
   };
 
   const handleBuyNow = () => {

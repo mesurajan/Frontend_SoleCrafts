@@ -7,8 +7,8 @@ const slides = [
   {
     id: 1,
     image: shoe01,
-    title: "",
-    discount: "",
+    title: " ",
+    discount: " ",
   },
   {
     id: 2,
