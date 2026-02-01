@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mesurajan/Teaching_react.git"

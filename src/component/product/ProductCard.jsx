@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaRegHeart } from "react-icons/fa";
 import { ShoppingCart } from "lucide-react";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../apps/Reducers/cartSlice"
+import { addToCart } from "../../Apps/Reducers/cartSlice"
 
 function ProductCard({ product }) {
   const navigate = useNavigate();
