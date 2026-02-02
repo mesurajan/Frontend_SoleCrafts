@@ -75,7 +75,7 @@ function Contact() {
               />
               <div className="text-background text-sm text-left">
                 <p className="font-medium">Tel: +977 9816413787</p>
-                <p className="font-medium">Email: support@solecraftshoe.com</p>
+                <p className="font-medium">Email: support@solecrafts.com</p>
               </div>
             </div>
 

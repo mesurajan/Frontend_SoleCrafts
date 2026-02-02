@@ -1,14 +1,8 @@
-import {createSlice} from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit";
 
-/*
-  STEP 1: Load cart items from localStorage
-  - Reads saved cart data on page refresh
-*/
-
-
-const loadCartFromLocalStorage = () => {
+const loadWishListFromLocalStorage = () => {
   try {
-    const data = localStorage.getItem("cart");
+    const data = localStorage.getItem("wishList");
     return data
       ? JSON.parse(data)
       : {
@@ -16,7 +10,7 @@ const loadCartFromLocalStorage = () => {
           items: [],
         };
   } catch (error) {
-    console.error("Error loading cart from localStorage", error);
+    console.error("Error loading wishlist from localStorage", error);
     return {
       count: 0,
       items: [],
@@ -27,24 +21,25 @@ const loadCartFromLocalStorage = () => {
   STEP 2: Save cart items to localStorage
 */
 
-const saveCartToLocalStorage = (state) => {
+const saveWishListToLocalStorage = (state) => {
   try {
-    localStorage.setItem("cart", JSON.stringify(state));
+    localStorage.setItem("wishList", JSON.stringify(state));
   } catch (error) {
-    console.error("Error saving cart to localStorage", error);
+    console.error("Error saving wishList to localStorage", error);
   }
 };
 
   // Initial state (restored from localStorage)
-  const initialState = loadCartFromLocalStorage();
+  const initialState = loadWishListFromLocalStorage();
 
 /*
   STEP 3: Create cart slice
 */
 
-const cartSlice = createSlice({
-  name: "cart",
+const wishListSlice = createSlice({
+  name: "wishList",
   initialState,
+
  
   reducers: {
     /*
@@ -52,7 +47,7 @@ const cartSlice = createSlice({
       - action.payload → full product object from mockProducts
       - Uses _id to avoid duplicates
     */
-    addToCart: (state, action) => {
+    addToWishList: (state, action) => {
       const product = action.payload;
 
       const existingItem = state.items.find(
@@ -69,13 +64,13 @@ const cartSlice = createSlice({
       }
 
       state.count += 1;
-      saveCartToLocalStorage(state);
+      saveWishListToLocalStorage(state);
     },
 
     /*
       REMOVE FROM CART (entire product)
     */
-        removeFromCart: (state, action) => {
+        removeFromWishList: (state, action) => {
             const productId = action.payload;
 
             const existingItem = state.items.find(
@@ -90,7 +85,7 @@ const cartSlice = createSlice({
             }
 
             if (state.count < 0) state.count = 0;
-            saveCartToLocalStorage(state);
+            saveWishListToLocalStorage(state);
             },
 
 
@@ -107,7 +102,7 @@ const cartSlice = createSlice({
       if (item) {
         item.quantity += 1;
         state.count += 1;
-        saveCartToLocalStorage(state);
+        saveWishListToLocalStorage(state);
       }
     },
 
@@ -135,32 +130,28 @@ const cartSlice = createSlice({
       }
 
       if (state.count < 0) state.count = 0;
-      saveCartToLocalStorage(state);
+      saveWishListToLocalStorage(state);
     },
+
+
+
      /*
       CLEAR CART
     */
-    clearCart: (state) => {
+    clearWishList: (state) => {
       state.count = 0;
       state.items = [];
-      saveCartToLocalStorage(state);
+      saveWishListToLocalStorage(state);
     },
   },
 })
 
-/*
-  STEP 4: Export Actions & Reducer
-*/
 export const {
-  addToCart,
-  removeFromCart,
-  increaseQuantity,
-  decreaseQuantity,
-  clearCart,
-} = cartSlice.actions;
+    addToWishList,
+    removeFromWishList,
+    increaseQuantity,
+    decreaseQuantity,
+    clearWishList
+} = wishListSlice.actions;
 
-export default cartSlice.reducer;
-
-
-
-
+export default wishListSlice.reducer;

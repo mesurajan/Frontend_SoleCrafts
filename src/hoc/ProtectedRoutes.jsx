@@ -1,25 +1,24 @@
-// src/components/ProtectedRoute.jsx
+// src/hoc/ProtectedRoutes.jsx
 import React from "react";
 import { Navigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const ProtectedRoute = ({ children, allowedRoles }) => {
   const token = localStorage.getItem("token");
-  const role = localStorage.getItem("role"); // we saved role after login
+  const role = localStorage.getItem("role");
 
   if (!token) {
-    alert("You need to login first!");
+    alert("Please Login First !!");
     return <Navigate to="/login" replace />;
   }
 
-  // If route is restricted to specific roles
+  // Role-based protection (optional)
   if (allowedRoles && !allowedRoles.includes(role)) {
-    alert("Unauthorized access!");
-    // redirect user depending on role
-    return role === "admin" ? (
-      <Navigate to="/admin" replace />
-    ) : (
-      <Navigate to="/" replace />
-    );
+    toast.error("Unauthorized access");
+
+    return role === "admin"
+      ? <Navigate to="/admin" replace />
+      : <Navigate to="/" replace />;
   }
 
   return children;

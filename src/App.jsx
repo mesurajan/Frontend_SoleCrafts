@@ -1,9 +1,8 @@
 import React from 'react'
 import { Toaster } from "react-hot-toast";
-import { Route,Routes } from 'react-router'
+import { Route,Routes } from 'react-router-dom'
 import MainLayout from './layouts/MainLayout'
 import Home from './pages/Home'
-import About from './pages/About'
 import Contact from './pages/Contact'
 import LoginPage from './pages/auth/LoginPage'
 import SignupPage from './pages/auth/SignupPage'
@@ -13,7 +12,7 @@ import Orders from './pages/Orders';
 import WishList from './pages/WishList';
 import Cart from './pages/Cart';
 import ProtectedRoute from './hoc/ProtectedRoutes';
-
+import Profile from './pages/auth/Profile';
 function App() {
 
 
@@ -23,14 +22,15 @@ function App() {
   <Routes>
     <Route path="/" element={<MainLayout/>}>
       <Route index element={<Home/>}/>
-      <Route path="about" element={<About/>}/>
       <Route path="contact" element={<Contact/>}/>
       <Route path="orders" element={<Orders/>}/>
       <Route path="product" element={<Products/>}/>
-      <Route path="/product/:id" element={<ProductDetails />} />
+      <Route path="product/:id" element={<ProductDetails />} />
 
       <Route path="wishlist" element={<ProtectedRoute><WishList/></ProtectedRoute>}/>
       <Route path="cart" element={<ProtectedRoute><Cart/></ProtectedRoute>}/>
+      <Route path="profile" element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
+
     </Route>
 
 

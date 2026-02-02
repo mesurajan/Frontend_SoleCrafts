@@ -3,25 +3,42 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaRegHeart } from "react-icons/fa";
 import { ShoppingCart } from "lucide-react";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../Apps/Reducers/cartSlice"
+import { addToCart } from "../../apps/Reducers/cartSlice";
+import { addToWishList } from "../../apps/Reducers/wishList";
 
 function ProductCard({ product }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   
   const handleWishlist = () => {
+     const token = localStorage.getItem("token");
+    if (!token) {
+    alert("Please login first !!");
+      return navigate("/login");
+
+    }
+        dispatch(addToWishList(product));
+        alert("Product added to wishlist!");
     
-    console.log("Wishlist:", product._id);
   };
 
   const handleCart = () => {
-     dispatch(addToCart(product));
-    console.log("Added to cart:", product._id);
+     const token = localStorage.getItem("token");
+    if (!token) 
+      { alert("Please login first !!");
+        return navigate("/login");
+      }
+    dispatch(addToCart(product));
+     alert("Product added to cart!");
+
   };
 
   const handleBuyNow = () => {
+    requireLogin(() => {
     dispatch(addToCart(product));
     navigate("/cart");
+  });
   };
 
   const productLink = `/product/${product._id}`;

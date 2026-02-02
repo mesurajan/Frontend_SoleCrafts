@@ -24,7 +24,7 @@ function Footer() {
           {/* Follow Us */}
           <div className="lg:w-1/5">
             <h3 className="text-sm font-semibold  mb-2">Follow Us</h3>
-            <p className="text-sm  text-justify">
+            <p className="text-sm  text-justify mt-6 ">
               Join the SoleCrafts community and never miss out on our latest collections, exclusive offers, and style tips. 
             </p>
             <div className="mt-4 flex gap-4">
@@ -58,10 +58,10 @@ function Footer() {
           {/* Contact */}
           <div className="lg:w-2/5">
             <h3 className="text-sm font-semibold  mb-2">Contact Us</h3>
-            <p className="text-sm ">
+            <p className="text-sm  mt-6">
               SoleCrafts HQ . Sainamaina -10 saljhandi, <br />
               <span className="font-medium">Phone:</span> +977 9816413787 <br />
-              <span className="font-medium">Email:</span> support@solecraftshoe.com
+              <span className="font-medium">Email:</span> support@solecrafts.com
             </p>
           </div>
         </div>
@@ -73,10 +73,18 @@ function Footer() {
         <div>
           <h3 className="text-sm font-bold  uppercase tracking-wider">Quick Links</h3>
           <ul className="mt-4 space-y-3 text-sm ">
-            <li className="hover:text-blue-600 cursor-pointer transition-colors">Home</li>
-            <li className="hover:text-blue-600 cursor-pointer transition-colors">Shop</li>
-            <li className="hover:text-blue-600 cursor-pointer transition-colors">New Arrivals</li>
-            <li className="hover:text-blue-600 cursor-pointer transition-colors">Best Sellers</li>
+            <li className="hover:text-blue-600 cursor-pointer transition-colors">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="hover:text-blue-600 cursor-pointer transition-colors">
+              <Link to="/product">Shop</Link>
+            </li>
+            <li className="hover:text-blue-600 cursor-pointer transition-colors">
+             <Link to="/contact">Contact</Link>
+            </li>
+            <li className="hover:text-blue-600 cursor-pointer transition-colors">
+             <Link to="/orders">My Orders</Link>
+            </li>
           </ul>
         </div>
 
@@ -84,7 +92,9 @@ function Footer() {
         <div>
           <h3 className="text-sm font-bold  uppercase tracking-wider">Customer Care</h3>
           <ul className="mt-4 space-y-3 text-sm ">
-            <li className="hover:text-blue-600 cursor-pointer transition-colors">Contact Us</li>
+            <li className="hover:text-blue-600 cursor-pointer transition-colors">
+              <Link to="/contact">Contact</Link>
+            </li>
             <li className="hover:text-blue-600 cursor-pointer transition-colors">FAQs</li>
             <li className="hover:text-blue-600 cursor-pointer transition-colors">Shipping & Delivery</li>
             <li className="hover:text-blue-600 cursor-pointer transition-colors">Returns & Exchanges</li>
@@ -99,8 +109,12 @@ function Footer() {
               <Link to="/login">Login / Register</Link>
             </li>
 
-            <li className="hover:text-blue-600 cursor-pointer transition-colors">Order History</li>
-            <li className="hover:text-blue-600 cursor-pointer transition-colors">Wishlist</li>
+            <li className="hover:text-blue-600 cursor-pointer transition-colors">
+              <Link to="/orders">Order History</Link>
+            </li>
+            <li className="hover:text-blue-600 cursor-pointer transition-colors">
+            <Link to="/wishlist">My WhishList</Link>
+            </li>
             <li className="hover:text-blue-600 cursor-pointer transition-colors">Track Order</li>
           </ul>
         </div>
