@@ -7,12 +7,17 @@ import Contact from './pages/Contact'
 import LoginPage from './pages/auth/LoginPage'
 import SignupPage from './pages/auth/SignupPage'
 import Products from './pages/Products';
-import ProductDetails from "./component/product/ProductDetails";
+import ProductDetails from "./pages/ProductDetails";
 import Orders from './pages/Orders';
 import WishList from './pages/WishList';
 import Cart from './pages/Cart';
 import ProtectedRoute from './hoc/ProtectedRoutes';
 import Profile from './pages/auth/Profile';
+
+import AdminLayout from './layouts/AdminLayout';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminProducts from './pages/admin/AdminProducts';
+
 function App() {
 
 
@@ -37,6 +42,16 @@ function App() {
       {/* routes for Auth */}
     <Route path="login" element={<LoginPage/>}/>
     <Route path="signup" element={<SignupPage/>}/>
+  </Routes>
+
+
+{/* Admin routes */}
+  <Routes>
+    <Route path="/admin" element={<AdminLayout/>}>
+      {/* <Route index element={<ProtectedRoute><AdminDashboard/></ProtectedRoute>}/>
+      <Route path="/admin/product" element={<ProtectedRoute><AdminProducts/></ProtectedRoute>}/> */}
+
+    </Route>
   </Routes>
 
   </>

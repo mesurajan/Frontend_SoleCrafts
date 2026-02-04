@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { Mail, Lock, User, Phone, Home, Eye, EyeOff } from "lucide-react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from 'axios';
+// import { signup } from "../../utils/api" ;
+
+ const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5174";
 
 function SignupPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -17,25 +21,16 @@ function SignupPage() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    // Get existing users
-    const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+  try {
+    const response = await axios.post(`${BASE_URL}/api/signup`,formData);
+    const res = response.data;
 
-    // Check duplicate email
-    const userExists = existingUsers.some(
-      (user) => user.email === formData.email
-    );
-
-    if (userExists) {
-      toast.error("Email already registered!", { autoClose: 4000 });
-      return;
-    }
-
-    // Save new user
-    const updatedUsers = [...existingUsers, formData];
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
+    toast.success(res.message || "Signup successful!", {
+      autoClose: 3000,
+    });
 
     setFormData({
       name: "",
@@ -46,13 +41,15 @@ function SignupPage() {
       password: "",
     });
 
-    toast.success(
-      <div className="text-[#0A174E]">Signup successful!</div>,
-      { autoClose: 3000 }
-    );
-
     setTimeout(() => navigate("/login"), 3000);
-  };
+
+  } catch (err) {
+    const message =
+      err.response?.data?.message || "Signup failed";
+
+    toast.error(message, { autoClose: 4000 });
+  }
+};
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">

@@ -23,16 +23,16 @@ function ProductCard({ product }) {
     
   };
 
-  const handleCart = () => {
-     const token = localStorage.getItem("token");
-    if (!token) 
-      { alert("Please login first !!");
+    const handleCart = () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        alert("Please login to add products to your cart!");
         return navigate("/login");
       }
-    dispatch(addToCart(product));
-     alert("Product added to cart!");
+      dispatch(addToCart(product));
+      alert("Product added to cart!");
+    };
 
-  };
 
   const handleBuyNow = () => {
     requireLogin(() => {
@@ -45,58 +45,51 @@ function ProductCard({ product }) {
 
   return (
     <div className="relative flex flex-col items-center p-4 bg-white shadow rounded border hover:shadow-xl transition">
-      
-      {/* Wishlist + Cart */}
-      <div className="absolute top-2 right-2 flex gap-2">
-        <button
-          onClick={handleWishlist}
-          className="p-2 bg-white rounded-full shadow hover:bg-pink-100"
-        >
-          <FaRegHeart className="text-pink-500 size-3 md:size-4" />
-        </button>
-
-        <button
-          onClick={handleCart}
-          className="p-2 bg-white rounded-full shadow hover:bg-blue-100"
-        >
-          <ShoppingCart className="size-3 md:size-4" />
-        </button>
-      </div>
-
-      {/* Image */}
-      <div className="w-25 h-35 md:w-50 md:h-60 flex items-center justify-center overflow-hidden rounded-lg bg-white mb-1">
-        <img
-          src={product.image}
-          alt={product.title}
-          className="max-w-full max-h-full object-contain hover:scale-110 transition-transform duration-300"
-        />
-      </div>
-
-      {/* Info */}
-      <div className="mt-2 text-center">
-        <h3 className="text-sm font-semibold">{product.title}</h3>
-        <p className="text-xs text-gray-600">
-          Rs. {product.finalPrice}
-        </p>
-      </div>
-
-      {/* Actions */}
-      <div className="mt-4 flex flex-nowrap gap-1">
-        <Link to={productLink}>
-          <button className="viewdetails-btn whitespace-nowrap">
-            View Details
-          </button>
-        </Link>
-
-        <button
-          onClick={handleBuyNow}
-          className="buynow-btn whitespace-nowrap"
-        >
-          Buy Now
-        </button>
-      </div>
-    </div>
-  );
-}
+         {/* Wishlist + Cart Buttons */}
+         <div className="absolute top-2 right-2 flex gap-2">
+           <button
+             onClick={handleWishlist}
+             className="p-2 bg-white rounded-full shadow hover:bg-pink-100"
+           >
+             <FaRegHeart className="text-pink-500 size-3 md:size-4" />
+           </button>
+           <button
+             onClick={handleCart}
+             className="p-2 bg-white rounded-full shadow hover:bg-blue-100"
+           >
+             <ShoppingCart className="size-3 md:size-4" />
+   
+           </button>
+         </div>
+   
+         {/* Product Image */}
+         <div className="w-[100px] h-[140px] md:w-[200px] md:h-[240px] flex items-center justify-center overflow-hidden rounded-lg bg-white mb-1">
+           <img
+               src={product.image}
+              alt={product.title}
+             className="max-w-full max-h-full object-contain hover:scale-110 transition-transform duration-300 ease-in-out"
+           />
+         </div>
+   
+         {/* Product Info */}
+         <div className="mt-2 text-center">
+           <h3 className="text-sm font-semibold">{product.title}</h3>
+           <p className="text-xs text-gray-600">Rs. {product.finalPrice}</p>
+         </div>
+   
+         {/* Action Buttons */}
+        <div className="mt-4 flex flex-nowrap gap-1">
+         <Link to={productLink}>
+           <button className="viewdetails-btn whitespace-nowrap">View Details</button>
+         </Link>
+         <button onClick={handleBuyNow} className="buynow-btn whitespace-nowrap">
+           Buy Now
+         </button>
+       </div>
+   
+       </div>
+       
+     );
+   };
 
 export default ProductCard;

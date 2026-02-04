@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { login } from "../../utils/api" ;
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from 'axios'
+ const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5174";
+
 
 function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -8,40 +14,37 @@ function LoginPage() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    setError("");
+  const handleLogin = async (e) => {
+  e.preventDefault();
+  try {
 
-    // Get registered users from localStorage
-    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const response = await axios.post(`${BASE_URL}/api/login`, formData);
+    const res = response.data;
+    // const res = await login(formData);
 
-    // Find matching user
-    const matchedUser = users.find(
-      (user) =>
-        user.email === formData.email &&
-        user.password === formData.password
-    );
+    // Save token & user
+    const userData = {
+      id: res.user.id,
+      name: res.user.name,
+      email: res.user.email,
+      role: res.user.role,
+    };
 
-    if (!matchedUser) {
-      setError("Invalid email or password");
-      return;
+    localStorage.setItem("token", res.token);
+    localStorage.setItem("user", JSON.stringify(userData));
+
+    // Redirect based on role
+    if (userData.role === "admin" || userData.role === "seller") {
+      navigate("/admin");
+    } else {
+      navigate("/");
     }
 
-    // Save logged-in session
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        name: matchedUser.name,
-        email: matchedUser.email,
-        role: matchedUser.role || "user",
-      })
-    );
-
-    // Fake token (frontend-only)
-    localStorage.setItem("token", "local-auth-token");
-
-    navigate("/");
-  };
+  } catch (err) {
+    toast.error(err.message || "Invalid credentials");
+  }
+};
+  
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">

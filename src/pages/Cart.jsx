@@ -1,140 +1,226 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { IoMdRemove, IoMdAdd } from "react-icons/io";
+import { BsTrash } from "react-icons/bs";
 import {
+  clearCart,
   removeFromCart,
   increaseQuantity,
   decreaseQuantity,
 } from "../Apps/Reducers/cartSlice";
-import EmptyState from "../component/ui/EmptyState";
+import { FaRegHeart } from "react-icons/fa";
+import EmptyCartImg from "../assets/empty-cart.png";
 
-function Cart() {
-  const dispatch = useDispatch();
+import { Link, useNavigate } from "react-router-dom";
+import { addToWishList } from "../Apps/Reducers/wishList";
+
+const Cart = () => {
   const { items } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const subtotal = items.reduce(
-    (sum, item) => sum + item.finalPrice * item.quantity,
+  // ➖ decrease qty
+  const handleDecrease = (item) => {
+    if (item.quantity > 1) {
+      dispatch(decreaseQuantity(item._id ));
+    }
+  };
+
+  // ➕ increase qty
+  const handleIncrease = (item) => {
+    dispatch(increaseQuantity(  item._id ));
+  };
+
+  // ❌ remove item
+  const handleRemoveFromCart = (_id) => {
+    dispatch(removeFromCart( _id ));
+  };
+
+  // ❤️ wishlist
+  const handleWishlist = (item) => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+      return;
+    }
+    dispatch(addToWishList(item));
+    alert("Product added to wishlist !")
+  };
+
+  // 🛒 Buy Now
+  const handleBuyNow = (item) => {
+    navigate("/paymentprocessing", {
+      state: { buyNowItem: item },
+    });
+  };
+
+  // 💰 total price
+  const totalPrice = items.reduce(
+    (acc, item) => acc + Number(item.finalPrice) * item.quantity,
     0
   );
 
-  const shippingFee = items.length ? 20 : 0;
-  const total = subtotal + shippingFee;
-  
-if (items.length === 0) {
-  return <EmptyState type="cart" />;
-}
+  // 💳 checkout
+  const handleCheckout = () => {
+    navigate("/paymentprocessing", { state: { items } });
+  };
+
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10 mt-32">
-      {/* Header */}
-      <h2 className="text-3xl font-bold mb-8">Shopping Cart</h2>
+    <div className="bg-white container mx-auto text-[#0A174E] mb-10 md:px-0 mt-20 px-6">
+      {/* HEADER */}
+      <div className="bg-backgroundlite py-4 pt-20">
+        <h1 className="text-3xl font-bold px-4">Your Cart</h1>
+       
+      </div>
 
-      {/* Cart Items */}
-      <div className="space-y-6">
-        {items.map((item) => (
-          <div
-            key={item._id}
-            className="flex flex-col md:flex-row items-center justify-between gap-6 bg-white rounded-xl shadow-sm p-4"
-          >
-            {/* Left */}
-            <div className="flex items-center gap-4 w-full md:w-2/5">
-              <button
-                onClick={() => dispatch(removeFromCart(item._id))}
-                className="text-red-500 text-xl hover:scale-110 transition"
-              >
-                ✕
-              </button>
+      <section className="p-6 mx-auto">
+        {items.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-20">
+            <img
+              src={EmptyCartImg}
+              alt="Empty Cart"
+              className="w-60 h-60 object-contain mb-6"
+            />
+            <h2 className="text-2xl font-semibold mb-2">
+              Your cart is empty
+            </h2>
+            <p className="text-gray-500 mb-4 text-center">
+              Looks like you haven’t added anything to your cart yet.
+            </p>
+            <Link
+              to="/product"
+              className="px-6 py-3 bg-blue-900 text-white rounded hover:bg-blue-800 transition"
+            >
+              Go Shopping
+            </Link>
+          </div>
+        ) : (
+          <>
+            {/* CART ITEMS */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {items.map((item) => (
+                <div
+                  key={item._id}
+                  className="relative bg-white shadow hover:shadow-lg transition p-4"
+                >
+                  {/* TOP ACTIONS */}
+                  <div className="absolute top-3 right-3 flex gap-2">
+                    <button
+                      onClick={() => handleWishlist(item)}
+                      className="p-2 bg-white rounded-full shadow hover:bg-pink-100"
+                    >
+                      <FaRegHeart className="text-pink-500 size-3 md:size-4" />
+                    </button>
 
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-20 h-20 object-contain border rounded-lg"
-              />
+                    <button
+                      onClick={() => {
+                        if (
+                          window.confirm(
+                            "Are you sure you want to remove this item?"
+                          )
+                        ) {
+                          handleRemoveFromCart(item._id);
+                        }
+                      }}
+                      className="p-1 bg-white rounded-full shadow hover:bg-red-100 text-red-500"
+                    >
+                      <BsTrash size={14} />
+                    </button>
+                  </div>
 
-              <div>
-                <p className="font-semibold">{item.title}</p>
-                <p className="text-gray-500 text-sm">
-                  Rs. {item.finalPrice} / unit
-                </p>
+                  {/* IMAGE */}
+                  <div className="w-full h-36 flex items-center justify-center mb-3 overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="max-w-full max-h-full object-contain hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+
+                  <h3 className="text-sm font-semibold line-clamp-2">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-xs text-gray-500 mt-1">
+                    Rs. {item.finalPrice}
+                  </p>
+
+                  {/* QUANTITY + PRICE */}
+                  <div className="flex items-center justify-between border-t mt-3 pt-3">
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => handleDecrease(item)}
+                        className="p-1 bg-gray-100 hover:bg-gray-200"
+                      >
+                        <IoMdRemove size={14} />
+                      </button>
+
+                      <span className="text-sm font-medium">
+                        {item.quantity}
+                      </span>
+
+                      <button
+                        onClick={() => handleIncrease(item)}
+                        className="p-1 bg-gray-100 hover:bg-gray-200"
+                      >
+                        <IoMdAdd size={14} />
+                      </button>
+                    </div>
+
+                    <span className="text-sm font-semibold">
+                      Rs.{" "}
+                      {(item.finalPrice * item.quantity).toLocaleString()}
+                    </span>
+                  </div>
+
+                  <button
+                    onClick={() => handleBuyNow(item)}
+                    className="mt-3 w-full bg-[#02573d] hover:bg-[#044633] rounded-[6px] text-white py-1.5 text-sm"
+                  >
+                    Buy Now
+                  </button>
+                </div>
+              ))}
+            </div>
+
+            {/* FOOTER */}
+            <div className="mt-8 p-4 bg-white shadow flex flex-col sm:flex-row items-center justify-between gap-4">
+              <p className="text-lg font-semibold">
+                Total:{" "}
+                <span className="text-[#0A174E]">
+                  Rs. {totalPrice.toLocaleString()}
+                </span>
+              </p>
+
+              <div className="flex gap-3">
+                <button
+                  onClick={() => {
+                    if (
+                      window.confirm(
+                        "Are you sure you want to clear your cart?"
+                      )
+                    ) {
+                      dispatch(clearCart());
+                    }
+                  }}
+                  className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-[6px]"
+                >
+                  Clear Cart
+                </button>
+
+                <button
+                  onClick={handleCheckout}
+                  className="px-4 py-2 bg-[#031d8f] hover:bg-[#0A174E] text-white rounded-[6px]"
+                >
+                  Checkout
+                </button>
               </div>
             </div>
-
-            {/* Quantity */}
-            <div className="flex items-center gap-3">
-              <button
-                disabled={item.quantity === 1}
-                onClick={() => dispatch(decreaseQuantity(item._id))}
-                className={`px-3 py-1 rounded-lg border transition
-                  ${
-                    item.quantity === 1
-                      ? "opacity-40 cursor-not-allowed"
-                      : "hover:bg-gray-100"
-                  }`}
-              >
-                −
-              </button>
-
-              <span className="min-w-[30px] text-center font-medium">
-                {item.quantity}
-              </span>
-
-              <button
-                onClick={() => dispatch(increaseQuantity(item._id))}
-                className="px-3 py-1 rounded-lg border hover:bg-gray-100 transition"
-              >
-                +
-              </button>
-            </div>
-
-            {/* Price */}
-            <div className="font-semibold text-lg">
-              Rs. {item.finalPrice * item.quantity}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Bottom Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
-        {/* Coupon */}
-        <div className="flex gap-3">
-          <input
-            type="text"
-            placeholder="Voucher code"
-            className="border px-4 py-3 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-          <button className="bg-indigo-600 text-white px-6 rounded-lg hover:bg-indigo-700 transition">
-            Redeem
-          </button>
-        </div>
-
-        {/* Summary */}
-        <div className="bg-gray-50 rounded-xl p-6 shadow-sm">
-          <div className="flex justify-between mb-3">
-            <span>Subtotal</span>
-            <span>Rs. {subtotal}</span>
-          </div>
-
-          <div className="flex justify-between mb-3">
-            <span>Shipping</span>
-            <span>Rs. {shippingFee}</span>
-          </div>
-
-          <div className="flex justify-between mb-4 text-gray-500">
-            <span>Coupon</span>
-            <span>No</span>
-          </div>
-
-          <div className="flex justify-between text-2xl font-bold mb-6">
-            <span>Total</span>
-            <span>Rs. {total}</span>
-          </div>
-
-          <button className="w-full bg-indigo-600 text-white py-3 rounded-xl hover:bg-indigo-700 transition text-lg">
-            Checkout
-          </button>
-        </div>
-      </div>
+          </>
+        )}
+      </section>
     </div>
   );
-}
+};
 
 export default Cart;
