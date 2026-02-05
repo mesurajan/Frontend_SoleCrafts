@@ -19,24 +19,24 @@ const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // ➖ decrease qty
+  //  decrease qty
   const handleDecrease = (item) => {
     if (item.quantity > 1) {
       dispatch(decreaseQuantity(item._id ));
     }
   };
 
-  // ➕ increase qty
+  //  increase qty
   const handleIncrease = (item) => {
     dispatch(increaseQuantity(  item._id ));
   };
 
-  // ❌ remove item
+  // remove item
   const handleRemoveFromCart = (_id) => {
     dispatch(removeFromCart( _id ));
   };
 
-  // ❤️ wishlist
+  // wishlist
   const handleWishlist = (item) => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -47,23 +47,25 @@ const Cart = () => {
     alert("Product added to wishlist !")
   };
 
-  // 🛒 Buy Now
+  // Buy Now 
   const handleBuyNow = (item) => {
     navigate("/paymentprocessing", {
       state: { buyNowItem: item },
     });
   };
 
-  // 💰 total price
+  // total price
   const totalPrice = items.reduce(
     (acc, item) => acc + Number(item.finalPrice) * item.quantity,
     0
   );
 
-  // 💳 checkout
+  // checkout for entire cart 
   const handleCheckout = () => {
     navigate("/paymentprocessing", { state: { items } });
   };
+
+
 
   return (
     <div className="bg-white container mx-auto text-[#0A174E] mb-10 md:px-0 mt-20 px-6">
@@ -129,7 +131,7 @@ const Cart = () => {
                   </div>
 
                   {/* IMAGE */}
-                  <div className="w-full h-36 flex items-center justify-center mb-3 overflow-hidden">
+                  <div className="w-full h-36 flex items-center justify-center mb-6 mt-14 overflow-hidden">
                     <img
                       src={item.image}
                       alt={item.title}
@@ -172,50 +174,58 @@ const Cart = () => {
                       {(item.finalPrice * item.quantity).toLocaleString()}
                     </span>
                   </div>
-
+                  <div className="mt-3 flex gap-2">
                   <button
                     onClick={() => handleBuyNow(item)}
-                    className="mt-3 w-full bg-[#02573d] hover:bg-[#044633] rounded-[6px] text-white py-1.5 text-sm"
+                    className="flex-1 bg-[#02573d] hover:bg-[#044633] rounded-[6px] text-white py-1.5 text-sm"
                   >
                     Buy Now
                   </button>
+
+            
+                </div>
                 </div>
               ))}
             </div>
 
             {/* FOOTER */}
-            <div className="mt-8 p-4 bg-white shadow flex flex-col sm:flex-row items-center justify-between gap-4">
-              <p className="text-lg font-semibold">
-                Total:{" "}
-                <span className="text-[#0A174E]">
-                  Rs. {totalPrice.toLocaleString()}
-                </span>
-              </p>
+            <div className="mt-8 p-6 bg-white shadow-lg rounded-lg flex flex-col sm:flex-row items-center justify-between gap-4">
+              {/* Total Info */}
+              <div className="flex flex-col sm:flex-row items-center gap-4">
+                <div className="text-left">
+                  <p className="text-gray-500 text-sm">Items in Cart: {items.length}</p>
+                  <p className="text-2xl font-bold text-[#0A174E]">
+                    Total: Rs. {totalPrice.toLocaleString()}
+                  </p>
+                  <p className="text-gray-400 text-xs mt-1">
+                    Taxes and shipping may apply
+                  </p>
+                </div>
+              </div>
 
-              <div className="flex gap-3">
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto mt-4 sm:mt-0">
                 <button
                   onClick={() => {
                     if (
-                      window.confirm(
-                        "Are you sure you want to clear your cart?"
-                      )
+                      window.confirm("Are you sure you want to clear your cart?")
                     ) {
                       dispatch(clearCart());
                     }
                   }}
-                  className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-[6px]"
+                  className="flex-1 sm:flex-none px-6 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg shadow-md transition"
                 >
                   Clear Cart
                 </button>
 
                 <button
                   onClick={handleCheckout}
-                  className="px-4 py-2 bg-[#031d8f] hover:bg-[#0A174E] text-white rounded-[6px]"
+                  className="flex-1 sm:flex-none px-6 py-2 bg-[#031d8f] hover:bg-[#0A174E] text-white font-semibold rounded-lg shadow-md transition"
                 >
                   Checkout
                 </button>
               </div>
-            </div>
+            </div>     
           </>
         )}
       </section>

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../utils/api" ;
+// import { login } from "../../utils/api" ;
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios'
- const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5174";
+
+const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5174";
 
 
 function LoginPage() {

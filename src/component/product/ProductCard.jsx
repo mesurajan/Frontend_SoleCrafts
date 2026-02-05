@@ -34,12 +34,18 @@ function ProductCard({ product }) {
     };
 
 
-  const handleBuyNow = () => {
-    requireLogin(() => {
-    dispatch(addToCart(product));
-    navigate("/cart");
-  });
+const handleBuyNow = (item) => {
+  const buyNowItem = {
+    ...item,
+    price: item.price ?? item.finalPrice ?? 0, // fallback if price missing
+    quantity: 1, // ensure quantity exists
   };
+
+  navigate("/paymentprocessing", {
+    state: { buyNowItem },
+  });
+};
+
 
   const productLink = `/product/${product._id}`;
 
@@ -76,17 +82,19 @@ function ProductCard({ product }) {
            <h3 className="text-sm font-semibold">{product.title}</h3>
            <p className="text-xs text-gray-600">Rs. {product.finalPrice}</p>
          </div>
-   
+
          {/* Action Buttons */}
-        <div className="mt-4 flex flex-nowrap gap-1">
-         <Link to={productLink}>
-           <button className="viewdetails-btn whitespace-nowrap">View Details</button>
-         </Link>
-         <button onClick={handleBuyNow} className="buynow-btn whitespace-nowrap">
-           Buy Now
-         </button>
-       </div>
-   
+            <div className="mt-4 flex flex-nowrap gap-1">
+              <Link to={productLink}>
+                <button className="viewdetails-btn whitespace-nowrap">View Details</button>
+              </Link>
+              <button
+                onClick={() => handleBuyNow(product)}
+                className="buynow-btn whitespace-nowrap"
+              >
+                Buy Now
+              </button>
+            </div>
        </div>
        
      );

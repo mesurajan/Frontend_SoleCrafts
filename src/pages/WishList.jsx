@@ -122,16 +122,15 @@ export default function WishList () {
                 </div>
 
                 {/* Image */}
-                <div className="w-[100px] h-[140px] md:w-[200px] md:h-[240px] mx-auto mt-4 mb-2">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="max-w-full max-h-full object-contain hover:scale-110 transition"
-                  />
-                </div>
-
-                {/* Content */}
-                <div className="flex flex-col items-center text-center px-2 flex-grow">
+                  <div className="w-37.5 h-37.5 md:w-50 md:h-50 mt-16 mb-4  mx-auto overflow-hidden rounded ">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                   {/* Content */}
+                <div className="flex flex-col items-center text-center px-2 grow">
                   <h3 className="text-sm md:text-base font-semibold line-clamp-2">
                     {item.title}
                   </h3>

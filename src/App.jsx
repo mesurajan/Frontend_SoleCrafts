@@ -13,11 +13,12 @@ import WishList from './pages/WishList';
 import Cart from './pages/Cart';
 import ProtectedRoute from './hoc/ProtectedRoutes';
 import Profile from './pages/auth/Profile';
-
+import PaymentProcessing from './pages/payment/PaymentProcessing';
 import AdminLayout from './layouts/AdminLayout';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminProducts from './pages/admin/AdminProducts';
-
+import AdminUserDetails from './pages/admin/AdminUserDetails';
+import AdminBanner01 from './pages/admin/AdminBanner01';
 function App() {
 
 
@@ -35,6 +36,7 @@ function App() {
       <Route path="wishlist" element={<ProtectedRoute><WishList/></ProtectedRoute>}/>
       <Route path="cart" element={<ProtectedRoute><Cart/></ProtectedRoute>}/>
       <Route path="profile" element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
+      <Route path="paymentprocessing" element={<ProtectedRoute><PaymentProcessing/></ProtectedRoute>}/>
 
     </Route>
 
@@ -47,9 +49,13 @@ function App() {
 
 {/* Admin routes */}
   <Routes>
-    <Route path="/admin" element={<AdminLayout/>}>
-      {/* <Route index element={<ProtectedRoute><AdminDashboard/></ProtectedRoute>}/>
-      <Route path="/admin/product" element={<ProtectedRoute><AdminProducts/></ProtectedRoute>}/> */}
+        <Route path="/admin" element={<ProtectedRoute><AdminLayout/></ProtectedRoute>}>
+
+      <Route index element={<ProtectedRoute><AdminDashboard/></ProtectedRoute>}/>
+      <Route path="/admin/users" element={<ProtectedRoute><AdminUserDetails/></ProtectedRoute>}/> 
+      <Route path="/admin/product" element={<ProtectedRoute><AdminProducts/></ProtectedRoute>}/> 
+      <Route path="/admin/banners" element={<ProtectedRoute><AdminBanner01/></ProtectedRoute>}/> 
+    
 
     </Route>
   </Routes>
