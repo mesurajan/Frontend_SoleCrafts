@@ -19,6 +19,8 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminProducts from './pages/admin/AdminProducts';
 import AdminUserDetails from './pages/admin/AdminUserDetails';
 import AdminBanner01 from './pages/admin/AdminBanner01';
+import AdminAddProduct from './component/Admin/AdminAddProduct';
+
 function App() {
 
 
@@ -55,6 +57,7 @@ function App() {
       <Route path="/admin/users" element={<ProtectedRoute><AdminUserDetails/></ProtectedRoute>}/> 
       <Route path="/admin/product" element={<ProtectedRoute><AdminProducts/></ProtectedRoute>}/> 
       <Route path="/admin/banners" element={<ProtectedRoute><AdminBanner01/></ProtectedRoute>}/> 
+      <Route path="/admin/addproduct" element={<ProtectedRoute><AdminAddProduct/></ProtectedRoute>}/>
     
 
     </Route>
