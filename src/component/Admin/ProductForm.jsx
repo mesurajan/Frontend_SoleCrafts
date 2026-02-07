@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
-/* ✅ DEFINE DEFAULT MODEL STATE */
+/*  DEFINE DEFAULT MODEL STATE */
 const emptyProduct = {
   title: "",
   brand: "",
   category: "",
-  gender: "Men",
+  gender: "",
   price: "",
   discount: "",
   description: "",
