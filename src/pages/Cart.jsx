@@ -12,7 +12,7 @@ import { FaRegHeart } from "react-icons/fa";
 import EmptyCartImg from "../assets/empty-cart.png";
 
 import { Link, useNavigate } from "react-router-dom";
-import { addToWishList } from "../Apps/Reducers/wishList";
+import { addToWishList } from "../apps/Reducers/wishList";
 
 const Cart = () => {
   const { items } = useSelector((state) => state.cart);
