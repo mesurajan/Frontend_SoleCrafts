@@ -2,7 +2,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromWishList ,clearWishList } from "../apps/Reducers/wishList";
-import { addToCart } from "../Apps/Reducers/cartSlice";
+import { addToCart } from "../apps/Reducers/cartSlice";
 import EmptyCartImg from "../assets/empty-cart.png";
 import { Link, useNavigate } from "react-router-dom";
 

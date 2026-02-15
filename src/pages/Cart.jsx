@@ -7,7 +7,7 @@ import {
   removeFromCart,
   increaseQuantity,
   decreaseQuantity,
-} from "../Apps/Reducers/cartSlice";
+} from "../apps/Reducers/cartSlice";
 import { FaRegHeart } from "react-icons/fa";
 import EmptyCartImg from "../assets/empty-cart.png";
 
